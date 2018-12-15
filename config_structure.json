@@ -1,0 +1,40 @@
+{
+    "_source" : {
+        "script" : "/path/of/script/to/source.sh"
+    },
+    
+    "_env" : {
+        "variable1" : "some_value"
+    },
+    
+    "_includes" : {
+        "test" : "/path/to/test/whatevs"
+    },
+
+    "Normal Structure" : {
+        "Processor" : {
+            "cpu_infos" : "lscpu"
+        }
+    },
+
+    "Conditional Structure" : {
+        "_if": [
+            "cat /etc/redhat-release | grep -i 'red hat'", 
+            "AND", 
+            "ls /tmp"
+        ],
+        "test_cmd" : "echo 'this will run if the conditional was successful'"
+
+    },
+
+    "Loop Structure": {
+        "_loop" :{
+            "_with": ["rhel-root", "/boot"],
+            "_item": {
+                "device": "dh -h | grep {{ _item }}",
+                "size": "df -h | grep {{ _item }} | awk -F ' ' '{print$2}'"
+            }
+        }
+    }
+
+}
