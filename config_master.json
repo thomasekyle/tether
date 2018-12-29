@@ -1,0 +1,14 @@
+{
+
+    "Normal Structure" : {
+            "_ifnot" : "ls /etc | grep hostgerger",
+            "cpu_infos" : "lscpu"
+    },
+
+    "Nested Structure" : {
+            "free_ram" : "free -h | grep 'Mem:' | awk -F ' ' '{print$2}'",
+            "block_devices" : "lsblk | grep root"
+    }
+
+}
+

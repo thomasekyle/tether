@@ -12,29 +12,17 @@
     },
 
     "Normal Structure" : {
+
         "Processor" : {
             "cpu_infos" : "lscpu"
         }
+    
     },
 
     "Conditional Structure" : {
-        "_if": [
-            "cat /etc/redhat-release | grep -i 'red hat'", 
-            "AND", 
-            "ls /tmp"
-        ],
+        "_if": "uname -a",
         "test_cmd" : "echo 'this will run if the conditional was successful'"
 
-    },
-
-    "Loop Structure": {
-        "_loop" :{
-            "_with": ["rhel-root", "/boot"],
-            "_item": {
-                "device": "dh -h | grep {{ _item }}",
-                "size": "df -h | grep {{ _item }} | awk -F ' ' '{print$2}'"
-            }
-        }
     }
 
 }

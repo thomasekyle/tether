@@ -1,0 +1,13 @@
+{
+
+    "Postgres Setup" : {
+            "_ifnot" : "rpm -qa | grep postgres*",
+            "install_postgres": "sudo yum install postgres -y"
+    },
+
+    "Nested Structure" : {
+            "free_ram" : "free -h | grep 'Mem:' | awk -F ' ' '{print$2}'",
+            "block_devices" : "lsblk | grep root"
+    }
+}
+
